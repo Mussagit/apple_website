@@ -1,0 +1,88 @@
+.iphone-page {
+  width: 100%;
+}
+
+.iphone__status {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 16px;
+  color: #6e6e73;
+}
+
+.iphone__status--error {
+  color: #d70015;
+}
+
+.iphone-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 60px 40px;
+  border-bottom: 1px solid #e8e8ed;
+  flex-wrap: wrap;
+}
+
+.iphone-hero:nth-child(even) {
+  background-color: #f5f5f7;
+}
+
+.iphone-hero__text {
+  max-width: 380px;
+  text-align: center;
+}
+
+.iphone-hero__text h1 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #1d1d1f;
+}
+
+.iphone-hero__tagline {
+  font-size: 18px;
+  color: #1d1d1f;
+  margin: 0 0 6px;
+}
+
+.iphone-hero__price {
+  font-size: 16px;
+  color: #1d1d1f;
+  margin: 0;
+}
+
+.iphone-hero__price-range {
+  font-size: 13px;
+  color: #6e6e73;
+  margin: 4px 0 18px;
+}
+
+.iphone-hero__cta {
+  display: inline-block;
+  color: #0071e3;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.iphone-hero__cta:hover {
+  text-decoration: underline;
+}
+
+.iphone-hero__image img {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .iphone-hero {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .iphone-hero__text h1 {
+    font-size: 30px;
+  }
+}

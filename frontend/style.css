@@ -1,0 +1,407 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+	background: linear-gradient(135deg, #dce5ec, #eef3f7, #c9d4dd);
+
+	overflow-x: hidden;
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.product-page {
+	width: 100%;
+	min-height: 100vh;
+
+	position: relative;
+
+	display: flex;
+
+	/*
+       This centers the form
+       horizontally and vertically.
+    */
+	justify-content: center;
+	align-items: center;
+
+	overflow: hidden;
+}
+
+/* =========================================
+   PHONE IMAGE
+========================================= */
+
+.iphone-graphic {
+	position: absolute;
+
+	width: 650px;
+	height: 650px;
+
+	/*
+       Phone stays behind the form.
+    */
+	left: calc(50% - 430px);
+
+	top: 50%;
+
+	transform: translateY(-50%);
+
+	background-image: url("./image/banner.jpg");
+
+	background-repeat: no-repeat;
+
+	background-position: center;
+
+	background-size: contain;
+
+	z-index: 1;
+
+	pointer-events: none;
+}
+
+/* =========================================
+   GLASS FORM CARD
+========================================= */
+
+.glass-card {
+	/*
+       CENTER THE FORM
+    */
+	position: relative;
+
+	z-index: 5;
+
+	width: 460px;
+
+	/*
+       Transparent glass
+    */
+	background: rgba(255, 255, 255, 0.48);
+
+	/*
+       Glass blur
+    */
+	backdrop-filter: blur(18px);
+
+	-webkit-backdrop-filter: blur(18px);
+
+	/*
+       Transparent border
+    */
+	border: 1px solid rgba(255, 255, 255, 0.65);
+
+	/*
+       Rounded corners
+    */
+	border-radius: 20px;
+
+	/*
+       Shadow
+    */
+	box-shadow:
+		0 25px 60px rgba(0, 0, 0, 0.18),
+		inset 0 1px 1px rgba(255, 255, 255, 0.8);
+
+	/*
+       Card spacing
+    */
+	padding: 28px 34px 30px;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.product-title {
+	text-align: center;
+
+	color: #111;
+
+	font-size: 28px;
+
+	font-weight: 500;
+
+	margin-top: 0;
+
+	margin-bottom: 20px;
+}
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+	margin-bottom: 10px;
+}
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-group label,
+.price-row label {
+	display: block;
+
+	margin-bottom: 4px;
+
+	color: #333;
+
+	font-size: 12px;
+
+	font-weight: 500;
+}
+
+/* =========================================
+   INPUT
+========================================= */
+
+.glass-input {
+	width: 100%;
+
+	height: 34px;
+
+	padding: 5px 10px;
+
+	border-radius: 8px;
+
+	border: 1px solid rgba(160, 170, 180, 0.45);
+
+	/*
+       Transparent input
+    */
+	background: rgba(255, 255, 255, 0.42);
+
+	color: #222;
+
+	font-size: 12px;
+
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+
+	transition: all 0.2s ease;
+}
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.glass-input::placeholder {
+	color: #555;
+
+	opacity: 0.85;
+}
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.glass-input:focus {
+	background: rgba(255, 255, 255, 0.72);
+
+	border-color: rgba(0, 123, 255, 0.55);
+
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+
+	outline: none;
+}
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.description-input {
+	height: 42px;
+
+	min-height: 42px;
+
+	resize: none;
+
+	padding-top: 8px;
+}
+
+/* =========================================
+   URL ICON
+========================================= */
+
+.input-wrapper {
+	position: relative;
+}
+
+.input-icon {
+	position: absolute;
+
+	right: 11px;
+
+	top: 50%;
+
+	transform: translateY(-50%);
+
+	color: #555;
+
+	font-size: 16px;
+
+	pointer-events: none;
+}
+
+/* =========================================
+   PRICE ROW
+========================================= */
+
+.price-row {
+	margin-top: 2px;
+
+	margin-bottom: 16px;
+}
+
+.price-row > div {
+	padding-left: 5px;
+
+	padding-right: 5px;
+}
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-btn {
+	height: 39px;
+
+	border: none;
+
+	border-radius: 7px;
+
+	background: #087bdc;
+
+	color: white;
+
+	font-size: 13px;
+
+	font-weight: 500;
+
+	box-shadow: 0 5px 12px rgba(0, 105, 200, 0.22);
+
+	transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+	background: #006dcc;
+
+	transform: translateY(-1px);
+
+	box-shadow: 0 7px 16px rgba(0, 105, 200, 0.28);
+}
+
+.submit-btn:active {
+	transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 900px) {
+	.iphone-graphic {
+		width: 550px;
+
+		height: 550px;
+
+		left: calc(50% - 390px);
+	}
+
+	.glass-card {
+		width: 430px;
+	}
+}
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+	.product-page {
+		padding: 30px 15px;
+
+		align-items: center;
+	}
+
+	/*
+       Phone moves behind
+       and becomes smaller.
+    */
+	.iphone-graphic {
+		width: 420px;
+
+		height: 420px;
+
+		left: 50%;
+
+		top: 18%;
+
+		transform: translateX(-50%);
+
+		opacity: 0.8;
+	}
+
+	/*
+       Form stays centered.
+    */
+	.glass-card {
+		width: 100%;
+
+		max-width: 390px;
+
+		padding: 24px 22px 26px;
+
+		background: rgba(255, 255, 255, 0.55);
+
+		backdrop-filter: blur(20px);
+
+		-webkit-backdrop-filter: blur(20px);
+	}
+
+	.product-title {
+		font-size: 24px;
+
+		margin-bottom: 18px;
+	}
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+	.glass-card {
+		max-width: 100%;
+
+		padding: 20px 18px 22px;
+	}
+
+	.product-title {
+		font-size: 22px;
+	}
+
+	.glass-input {
+		height: 33px;
+	}
+}
