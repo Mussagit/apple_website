@@ -88,57 +88,84 @@ function ResetPassword() {
 	};
 
 	return (
-		<div className="reset-password-page py-5 my-5" style={{ minHeight: "80vh", paddingTop: "80px" }}>
+		<div className="apple-admin-section d-flex align-items-center">
 			<div className="container">
 				<div className="row justify-content-center">
-					<div className="col-12 col-md-7 col-lg-5">
-						<div
-							className="card shadow-lg p-4 p-md-5"
-							style={{
-								borderRadius: "24px",
-								background: "#ffffff",
-								border: "1px solid #e5e5ea",
-							}}
-						>
+					<div className="col-12 col-md-8 col-lg-6 col-xl-5">
+						<div className="apple-admin-card">
 							<div className="text-center mb-4">
-								<div style={{ fontSize: "40px", marginBottom: "8px" }}>🔑</div>
-								<h2 className="fw-bold text-dark">Reset Admin Password</h2>
-								<p className="text-muted small">
-									Authentication verification required. Update your password with secure bcrypt hashing.
+								<div className="apple-admin-icon-circle">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "28px", height: "28px" }}>
+										<path d="M21 2l-2 2m-1.5 1.5L16 7l-2-2m-1.5 1.5L11 8l-2-2m-1.5 1.5L6 9l-2-2"></path>
+										<circle cx="7.5" cy="16.5" r="4.5"></circle>
+										<path d="M10.5 13.5L21.5 2.5"></path>
+									</svg>
+								</div>
+								<h2 className="apple-admin-title">Reset Admin Password</h2>
+								<p className="apple-admin-subtitle">
+									Authentication verification required. Passwords are encrypted with secure bcrypt hashing.
 								</p>
 							</div>
 
 							{status.message && (
-								<div className={`alert alert-${status.type} text-center small py-2`} role="alert">
-									{status.message}
+								<div className={`apple-alert ${status.type === "success" ? "apple-alert-success" : "apple-alert-danger"}`} role="alert">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+										{status.type === "success" ? (
+											<polyline points="20 6 9 17 4 12"></polyline>
+										) : (
+											<>
+												<circle cx="12" cy="12" r="10"></circle>
+												<line x1="12" y1="8" x2="12" y2="12"></line>
+												<line x1="12" y1="16" x2="12.01" y2="16"></line>
+											</>
+										)}
+									</svg>
+									<div>{status.message}</div>
 								</div>
 							)}
 
 							<form onSubmit={handleReset}>
 								{/* Username */}
 								<div className="mb-3">
-									<label className="form-label fw-semibold small text-muted">Admin Username</label>
-									<input
-										type="text"
-										name="user_name"
-										className="form-control py-2"
-										value={formData.user_name}
-										onChange={handleChange}
-										required
-										placeholder="e.g. @mussa"
-									/>
+									<label className="apple-form-label">
+										Admin Username <span className="apple-form-label-muted">(@mussa)</span>
+									</label>
+									<div className="apple-input-container">
+										<span className="input-icon-left">
+											<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+												<circle cx="12" cy="7" r="4"></circle>
+											</svg>
+										</span>
+										<input
+											type="text"
+											name="user_name"
+											className="apple-input has-left-icon"
+											value={formData.user_name}
+											onChange={handleChange}
+											required
+											placeholder="e.g. @mussa"
+											autoComplete="username"
+										/>
+									</div>
 								</div>
 
 								{/* Current Password / Security Key */}
 								<div className="mb-3">
-									<label className="form-label fw-semibold small text-muted">
-										Current Password or Master Key *
+									<label className="apple-form-label">
+										Current Password or Master Key
 									</label>
-									<div className="input-group">
+									<div className="apple-input-container mb-1">
+										<span className="input-icon-left">
+											<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+												<path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+											</svg>
+										</span>
 										<input
 											type={showCurrentPassword ? "text" : "password"}
 											name="current_password"
-											className="form-control py-2 border-end-0"
+											className="apple-input has-left-icon has-right-icon"
 											value={formData.current_password}
 											onChange={handleChange}
 											required
@@ -146,62 +173,102 @@ function ResetPassword() {
 										/>
 										<button
 											type="button"
-											className="btn btn-outline-secondary border-start-0 bg-white"
+											className="apple-password-toggle"
 											onClick={() => setShowCurrentPassword(!showCurrentPassword)}
 											title={showCurrentPassword ? "Hide password" : "Show password"}
 										>
-											{showCurrentPassword ? "🙈" : "👁️"}
+											{showCurrentPassword ? (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+													<line x1="1" y1="1" x2="23" y2="23"></line>
+												</svg>
+											) : (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+													<circle cx="12" cy="12" r="3"></circle>
+												</svg>
+											)}
 										</button>
 									</div>
 									<small className="text-muted" style={{ fontSize: "11px" }}>
-										Master key fallback: <code>APPLE-ADMIN-2026</code>
+										Master fallback key: <code style={{ background: "#f5f5f7", padding: "2px 6px", borderRadius: "4px" }}>APPLE-ADMIN-2026</code>
 									</small>
 								</div>
 
 								{/* New Password */}
 								<div className="mb-3">
-									<label className="form-label fw-semibold small text-muted">New Password *</label>
-									<div className="input-group">
+									<label className="apple-form-label">New Password</label>
+									<div className="apple-input-container">
+										<span className="input-icon-left">
+											<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+											</svg>
+										</span>
 										<input
 											type={showNewPassword ? "text" : "password"}
 											name="new_password"
-											className="form-control py-2 border-end-0"
+											className="apple-input has-left-icon has-right-icon"
 											value={formData.new_password}
 											onChange={handleChange}
 											required
-											placeholder="Enter new password"
+											placeholder="Enter new password (min. 4 characters)"
 										/>
 										<button
 											type="button"
-											className="btn btn-outline-secondary border-start-0 bg-white"
+											className="apple-password-toggle"
 											onClick={() => setShowNewPassword(!showNewPassword)}
 											title={showNewPassword ? "Hide password" : "Show password"}
 										>
-											{showNewPassword ? "🙈" : "👁️"}
+											{showNewPassword ? (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+													<line x1="1" y1="1" x2="23" y2="23"></line>
+												</svg>
+											) : (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+													<circle cx="12" cy="12" r="3"></circle>
+												</svg>
+											)}
 										</button>
 									</div>
 								</div>
 
 								{/* Confirm New Password */}
 								<div className="mb-4">
-									<label className="form-label fw-semibold small text-muted">Confirm New Password *</label>
-									<div className="input-group">
+									<label className="apple-form-label">Confirm New Password</label>
+									<div className="apple-input-container">
+										<span className="input-icon-left">
+											<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<polyline points="20 6 9 17 4 12"></polyline>
+											</svg>
+										</span>
 										<input
 											type={showConfirmPassword ? "text" : "password"}
 											name="confirm_password"
-											className="form-control py-2 border-end-0"
+											className="apple-input has-left-icon has-right-icon"
 											value={formData.confirm_password}
 											onChange={handleChange}
 											required
-											placeholder="Repeat new password"
+											placeholder="Confirm new password"
 										/>
 										<button
 											type="button"
-											className="btn btn-outline-secondary border-start-0 bg-white"
+											className="apple-password-toggle"
 											onClick={() => setShowConfirmPassword(!showConfirmPassword)}
 											title={showConfirmPassword ? "Hide password" : "Show password"}
 										>
-											{showConfirmPassword ? "🙈" : "👁️"}
+											{showConfirmPassword ? (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+													<line x1="1" y1="1" x2="23" y2="23"></line>
+												</svg>
+											) : (
+												<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+													<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+													<circle cx="12" cy="12" r="3"></circle>
+												</svg>
+											)}
 										</button>
 									</div>
 								</div>
@@ -209,18 +276,30 @@ function ResetPassword() {
 								<button
 									type="submit"
 									disabled={loading}
-									className="btn btn-primary w-100 py-2 rounded-pill fw-semibold"
-									style={{ background: "#0071e3", borderColor: "#0071e3" }}
+									className="apple-btn-primary"
 								>
-									{loading ? "Verifying & Resetting..." : "Verify & Update Password"}
+									{loading ? (
+										<>
+											<span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+											<span>Verifying & Updating...</span>
+										</>
+									) : (
+										<>
+											<span>Update Admin Password</span>
+											<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+												<line x1="5" y1="12" x2="19" y2="12"></line>
+												<polyline points="12 5 19 12 12 19"></polyline>
+											</svg>
+										</>
+									)}
 								</button>
 
-								<div className="d-flex justify-content-between align-items-center mt-4 pt-2 border-top">
-									<Link to="/add-product" className="text-muted small text-decoration-none">
+								<div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+									<Link to="/login" className="text-muted small text-decoration-none">
 										&larr; Back to Admin Sign In
 									</Link>
 									<Link to="/" className="text-muted small text-decoration-none">
-										Home Store
+										Customer Store
 									</Link>
 								</div>
 							</form>
@@ -233,3 +312,4 @@ function ResetPassword() {
 }
 
 export default ResetPassword;
+

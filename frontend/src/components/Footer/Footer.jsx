@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import USAflag from "../../assets/images/icons/16.png";
 
 function Footer() {
+	const [adminUser, setAdminUser] = useState(() => {
+		const saved = localStorage.getItem("admin_user");
+		try {
+			return saved ? JSON.parse(saved) : null;
+		} catch {
+			return null;
+		}
+	});
+
+	useEffect(() => {
+		const checkAuth = () => {
+			const saved = localStorage.getItem("admin_user");
+			try {
+				setAdminUser(saved ? JSON.parse(saved) : null);
+			} catch {
+				setAdminUser(null);
+			}
+		};
+		window.addEventListener("storage", checkAuth);
+		window.addEventListener("admin_auth_change", checkAuth);
+		return () => {
+			window.removeEventListener("storage", checkAuth);
+			window.removeEventListener("admin_auth_change", checkAuth);
+		};
+	}, []);
+
 	return (
 		<>
 			<footer className="footer-wrapper">
@@ -263,11 +289,11 @@ function Footer() {
 						More ways to shop: <Link to="/support">Find an Apple Store</Link> or{" "}
 						<Link to="/support">other retailer</Link> near you. Or call 1-800-MY-APPLE.
 					</div>
-					<div className="copyright-wrapper row">
-						<div className="copyright col-sm-12 order-2 col-md-8 order-md-1 col-lg-4 order-lg-1">
-							Copyright &copy; 2020 Apple Inc. All rights reserved.
+					<div className="copyright-wrapper row align-items-center">
+						<div className="copyright col-12 col-md-4 col-lg-4 order-2 order-md-1">
+							Copyright &copy; 2026 Apple Inc. All rights reserved.
 						</div>
-						<div className="footer-links-terms  col-sm-12 order-3 col-lg-6 order-lg-2">
+						<div className="footer-links-terms col-12 col-md-8 col-lg-6 order-3 order-md-2">
 							<ul>
 								<li>
 									<Link to="/support">Privacy Policy</Link>
@@ -284,14 +310,9 @@ function Footer() {
 								<li>
 									<Link to="/support">Site Map</Link>
 								</li>
-								<li>
-									<Link to="/login" style={{ color: "#0071e3", fontWeight: "500" }}>
-										Admin Portal
-									</Link>
-								</li>
 							</ul>
 						</div>
-						<div className="footer-country  col-sm-12 order-1 col-md-4 order-md-2 text-md-right col-lg-2 order-lg-3">
+						<div className="footer-country col-12 col-md-12 col-lg-2 order-1 order-md-3 text-lg-right">
 							<div className="flag-wrapper">
 								<img src={USAflag} alt="USA Flag" />
 							</div>{" "}

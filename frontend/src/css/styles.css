@@ -73,10 +73,18 @@ img {
 }
 .footer-links-terms ul {
 	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding-left: 0;
+	margin-bottom: 0;
+	row-gap: 6px;
 }
 .footer-links-terms ul li {
+	display: inline-flex;
+	align-items: center;
 	padding: 0 10px;
 	border-right: 1px solid #d2d2d7;
+	line-height: 1.3;
 }
 .footer-links-terms ul li:first-child {
 	padding-left: 0;
@@ -84,6 +92,76 @@ img {
 .footer-links-terms ul li:last-child {
 	border-right: 0;
 }
+.footer-links-terms ul li a {
+	color: #515154;
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+.footer-links-terms ul li a:hover {
+	color: #1d1d1f;
+	text-decoration: underline;
+}
+
+/* Professional Apple-Styled Admin Portal Footer Badge */
+.footer-admin-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 2px 10px;
+	border-radius: 980px;
+	background: rgba(0, 0, 0, 0.04);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	color: #515154 !important;
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+	text-decoration: none !important;
+}
+.footer-admin-link:hover {
+	color: #0071e3 !important;
+	background: rgba(0, 113, 227, 0.08);
+	border-color: rgba(0, 113, 227, 0.3);
+	box-shadow: 0 2px 8px rgba(0, 113, 227, 0.12);
+	text-decoration: none !important;
+	transform: translateY(-0.5px);
+}
+.footer-admin-link .admin-lock-icon {
+	width: 11px;
+	height: 11px;
+	stroke: currentColor;
+	transition: transform 0.2s ease;
+}
+.footer-admin-link:hover .admin-lock-icon {
+	transform: scale(1.15);
+}
+.footer-admin-link.active-admin {
+	background: rgba(52, 199, 89, 0.12);
+	border-color: rgba(52, 199, 89, 0.35);
+	color: #1a7f37 !important;
+}
+.admin-status-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: #34c759;
+	display: inline-block;
+	box-shadow: 0 0 0 2px rgba(52, 199, 89, 0.25);
+	animation: pulseStatus 2s infinite;
+}
+@keyframes pulseStatus {
+	0% {
+		box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4);
+	}
+	70% {
+		box-shadow: 0 0 0 4px rgba(52, 199, 89, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(52, 199, 89, 0);
+	}
+}
+
 
 .footer-links-wrapper h3 {
 	font-size: 12px;
@@ -411,3 +489,457 @@ img {
 		margin-top: 10px;
 	}
 }
+
+/* ==========================================================================
+   Apple Professional Admin Portal Styles
+   ========================================================================== */
+
+/* Header Admin Pill */
+.header-admin-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px;
+	background: rgba(255, 255, 255, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 980px;
+	color: #ffffff !important;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	text-decoration: none !important;
+	backdrop-filter: blur(8px);
+	transition: all 0.2s ease;
+}
+.header-admin-pill:hover {
+	background: rgba(0, 113, 227, 0.35);
+	border-color: #2997ff;
+	color: #ffffff !important;
+	box-shadow: 0 0 12px rgba(41, 151, 255, 0.3);
+}
+.admin-pill-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background-color: #34c759;
+	display: inline-block;
+	box-shadow: 0 0 0 2px rgba(52, 199, 89, 0.4);
+	animation: pulseStatus 2s infinite;
+}
+.header-admin-logout {
+	margin-left: 6px;
+	background: transparent;
+	border: none;
+	color: #86868b;
+	font-size: 11px;
+	font-weight: 500;
+	padding: 4px 6px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+.header-admin-logout:hover {
+	color: #ff453a;
+	background: rgba(255, 69, 58, 0.1);
+}
+
+/* Apple Account Header Dropdown */
+.apple-account-dropdown {
+	position: absolute;
+	top: calc(100% + 12px);
+	right: -10px;
+	width: 270px;
+	background: rgba(26, 26, 28, 0.95);
+	backdrop-filter: saturate(180%) blur(24px);
+	-webkit-backdrop-filter: saturate(180%) blur(24px);
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 18px;
+	padding: 16px;
+	box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.25);
+	z-index: 1050;
+	animation: appleDropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (max-width: 768px) {
+	.apple-account-dropdown {
+		right: auto;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 290px;
+	}
+}
+@keyframes appleDropdownFade {
+	from {
+		opacity: 0;
+		transform: translateY(-8px) scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+.apple-account-dropdown-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 12px;
+	border-radius: 10px;
+	color: #e5e5ea !important;
+	font-size: 13px;
+	font-weight: 400;
+	text-decoration: none !important;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+.apple-account-dropdown-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff !important;
+}
+.apple-dropdown-cta-btn {
+	display: block;
+	width: 100%;
+	background: #0071e3;
+	color: #ffffff !important;
+	text-align: center;
+	padding: 10px 16px;
+	border-radius: 980px;
+	font-size: 13.5px;
+	font-weight: 500;
+	text-decoration: none !important;
+	transition: background 0.2s ease, transform 0.15s ease;
+	box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+}
+.apple-dropdown-cta-btn:hover {
+	background: #0077ed;
+	transform: translateY(-1px);
+	color: #ffffff !important;
+}
+
+
+/* Admin Portal Page Container */
+.apple-admin-section {
+	min-height: 88vh;
+	padding-top: 96px;
+	padding-bottom: 60px;
+	background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+}
+
+/* Apple Admin Card */
+.apple-admin-card {
+	background: #ffffff;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 24px;
+	box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+	padding: 40px 36px;
+	transition: box-shadow 0.3s ease;
+}
+@media (max-width: 576px) {
+	.apple-admin-card {
+		padding: 28px 20px;
+		border-radius: 18px;
+	}
+}
+
+/* Apple Admin Header / Icon */
+.apple-admin-icon-circle {
+	width: 64px;
+	height: 64px;
+	border-radius: 18px;
+	background: linear-gradient(145deg, #1d1d1f 0%, #3a3a3c 100%);
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+	margin-bottom: 16px;
+}
+.apple-admin-icon-circle svg {
+	width: 30px;
+	height: 30px;
+}
+
+.apple-admin-title {
+	font-size: 26px;
+	font-weight: 700;
+	color: #1d1d1f;
+	letter-spacing: -0.02em;
+	margin-bottom: 6px;
+}
+.apple-admin-subtitle {
+	font-size: 14px;
+	color: #86868b;
+	line-height: 1.45;
+	margin-bottom: 24px;
+}
+
+/* Apple Form Inputs */
+.apple-form-label {
+	display: block;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: #1d1d1f;
+	margin-bottom: 6px;
+	letter-spacing: -0.01em;
+}
+.apple-form-label-muted {
+	color: #86868b;
+	font-weight: 400;
+	font-size: 11.5px;
+	margin-left: 4px;
+}
+.apple-input-container {
+	position: relative;
+	margin-bottom: 18px;
+}
+.apple-input-container .input-icon-left {
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #86868b;
+	pointer-events: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.apple-input {
+	width: 100%;
+	border: 1px solid #d2d2d7;
+	border-radius: 12px;
+	background: #fbfbfd;
+	padding: 12px 14px;
+	font-size: 15px;
+	color: #1d1d1f;
+	transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+	outline: none;
+}
+.apple-input.has-left-icon {
+	padding-left: 42px;
+}
+.apple-input.has-right-icon {
+	padding-right: 44px;
+}
+.apple-input:focus {
+	background: #ffffff;
+	border-color: #0071e3;
+	box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+.apple-input::placeholder {
+	color: #a1a1a6;
+}
+
+/* Eye Toggle Button */
+.apple-password-toggle {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: transparent;
+	border: none;
+	color: #86868b;
+	padding: 6px 8px;
+	cursor: pointer;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: color 0.15s ease, background 0.15s ease;
+}
+.apple-password-toggle:hover {
+	color: #1d1d1f;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+/* Apple Buttons */
+.apple-btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	background: #0071e3;
+	border: 1px solid #0071e3;
+	border-radius: 980px;
+	padding: 12px 24px;
+	font-size: 15px;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	color: #ffffff !important;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+	box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+	text-decoration: none !important;
+}
+.apple-btn-primary:hover {
+	background: #0077ed;
+	border-color: #0077ed;
+	box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3);
+	transform: translateY(-1px);
+}
+.apple-btn-primary:active {
+	background: #006edb;
+	transform: translateY(0);
+}
+.apple-btn-primary:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+.apple-btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	width: 100%;
+	background: #f5f5f7;
+	border: 1px solid #d2d2d7;
+	border-radius: 980px;
+	padding: 11px 20px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #1d1d1f !important;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none !important;
+}
+.apple-btn-secondary:hover {
+	background: #e8e8ed;
+	border-color: #86868b;
+}
+
+.apple-btn-danger-outline {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	background: transparent;
+	border: 1px solid rgba(255, 59, 48, 0.35);
+	border-radius: 980px;
+	padding: 6px 14px;
+	font-size: 12.5px;
+	font-weight: 500;
+	color: #ff3b30;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+.apple-btn-danger-outline:hover {
+	background: rgba(255, 59, 48, 0.08);
+	border-color: #ff3b30;
+}
+
+/* Security Badge */
+.apple-security-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px;
+	background: #f5f5f7;
+	border: 1px solid #e5e5ea;
+	border-radius: 980px;
+	font-size: 11.5px;
+	color: #86868b;
+	margin-top: 20px;
+}
+.apple-security-badge svg {
+	width: 12px;
+	height: 12px;
+	color: #34c759;
+}
+
+/* Apple Alerts */
+.apple-alert {
+	border-radius: 14px;
+	padding: 12px 16px;
+	font-size: 13.5px;
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+.apple-alert-danger {
+	background: #fff2f2;
+	border: 1px solid #ffd0d0;
+	color: #d70015;
+}
+.apple-alert-success {
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+	color: #15803d;
+}
+.apple-alert svg {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	margin-top: 1px;
+}
+
+/* Live Apple Product Preview Card */
+.apple-preview-box {
+	background: #ffffff;
+	border: 1px solid #e5e5ea;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+	text-align: center;
+	padding: 24px 20px;
+	transition: all 0.3s ease;
+}
+.apple-preview-tag {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #bf4801;
+	margin-bottom: 6px;
+}
+.apple-preview-title {
+	font-size: 24px;
+	font-weight: 700;
+	color: #1d1d1f;
+	letter-spacing: -0.02em;
+	margin-bottom: 4px;
+}
+.apple-preview-desc {
+	font-size: 14px;
+	color: #515154;
+	max-width: 90%;
+	margin: 0 auto 10px;
+	line-height: 1.4;
+}
+.apple-preview-price {
+	font-size: 13px;
+	color: #86868b;
+	margin-bottom: 16px;
+}
+.apple-preview-img-wrapper {
+	min-height: 200px;
+	max-height: 260px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fbfbfd;
+	border-radius: 14px;
+	margin-bottom: 16px;
+	overflow: hidden;
+	border: 1px dashed #e5e5ea;
+}
+.apple-preview-img-wrapper img {
+	max-height: 240px;
+	max-width: 100%;
+	object-fit: contain;
+	transition: transform 0.3s ease;
+}
+.apple-preview-img-wrapper img:hover {
+	transform: scale(1.03);
+}
+.apple-preview-actions {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	font-size: 13.5px;
+	color: #0071e3;
+	font-weight: 500;
+}
+

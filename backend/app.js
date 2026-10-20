@@ -21,6 +21,18 @@ app.use("/api", productRoute);
 app.use("/api/description", descriptionRoute);
 app.use("/api/price", priceRoute);
 app.use("/api/orders", ordersRoute);
-app.use("/api/users", userRoute);
+// Root & Healthcheck endpoints for cloud deployment (Render, Railway, etc.)
+app.get("/", (req, res) => {
+	res.json({
+		status: "ok",
+		service: "Apple Replica Backend API",
+		uptime: process.uptime(),
+	});
+});
+
+app.get("/api/health", (req, res) => {
+	res.json({ status: "healthy" });
+});
 
 export default app;
+
